@@ -1,0 +1,24 @@
+.albums {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.album {
+  display: grid;
+  grid-gap: 10px;
+  padding: 20px;
+  background: #ffffff6e;
+  grid-template-columns: 125px 1fr;
+  align-items: center;
+}
+
+.album__artwork {
+  width: 100%;
+}
+
+.album__details {
+  color: white;
+  display: grid;
+  align-items: center;
+}
