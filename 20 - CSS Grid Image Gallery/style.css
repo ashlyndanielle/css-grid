@@ -23,13 +23,77 @@ p {
 
 .close {
   background: none;
-  color: white;
+  margin-bottom: 10px;
+  color: black;
   border: 0;
 }
 
-.gallery {}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-auto-rows: 100px;
+  grid-auto-flow: dense;
+}
 
+.item {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
 
+.item img {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item__overlay {
+  background: #ffc60032;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  transform: translateY(100%);
+  transition: transform 300ms;
+}
+
+.item:hover .item__overlay {
+  transform: translateY(0);
+}
+
+.item__overlay button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.3);
+}
+
+.item.h2 {
+  grid-column: span 2;
+}
+.item.h3 {
+  grid-column: span 3;
+}
+.item.h4 {
+  grid-column: span 4;
+}
+
+.item.v2 {
+  grid-row: span 2;
+}
+.item.v3 {
+  grid-row: span 3;
+}
+.item.v4 {
+  grid-row: span 4;
+}
 
 .overlay {
   position: fixed;
@@ -44,9 +108,11 @@ p {
 
 .overlay.open {
   display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
-.overlay figure {
+.overlay .overlay-inner {
   background: white;
   width: 700px;
   padding: 20px;
